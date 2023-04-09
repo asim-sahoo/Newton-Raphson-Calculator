@@ -8,7 +8,7 @@ from kivy.core.text import LabelBase
 Window.size = (1920,1080)
 
 class NR(MDApp, App):
-    DEBUG = 1
+    DEBUG = 0
     KV_FILES = {
         os.path.join(os.getcwd(), "screenmanager.kv"),
         os.path.join(os.getcwd(), "FirstPage.kv"),  

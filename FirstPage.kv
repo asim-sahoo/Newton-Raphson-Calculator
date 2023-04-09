@@ -21,22 +21,12 @@
         md_bg_color: 58/255,62/255,99/255,255/255
         elevation: 2
         radius: [40,40,40,40]
-        BoxLayout:
-            orientation: 'vertical'
-            padding: 10, 10
-            row_force_default: True
-            ScrollView:
-                size: self.size
-                GridLayout:
-                    size: root.width * 0.1, root.height * 0.1
-                    size_hint_y: None
-                    cols: 1
-                    MDLabel:
-                        id: output
-                        font_name: "SPoppins"
-                        font_size: "15sp"
-                        color: rgba(255,255,255,255)
-                        
+        ScrollView:
+            do_scroll_x: False  
+            do_scroll_y: True
+            GridLayout:
+                id: output  
+                cols: 1                           
     MDLabel:
         text: "Newton"
         font_name: "MPoppins"
@@ -92,8 +82,8 @@
         size_hint_x: 0.376
         size_hint_y: 0.1
         pos_hint: {"center_x": .685, "center_y": .485}
-        min: 0
-        max: 5
+        min: 3
+        max: 8
         step: 1
         on_value: root.sl(*args)
     MDTextField:
@@ -154,12 +144,3 @@
         md_bg_color: rgba(140,82,255,255)
         on_press:
             root.calc()
-        
-        
-        
-        
-    
-
-
-        
-
