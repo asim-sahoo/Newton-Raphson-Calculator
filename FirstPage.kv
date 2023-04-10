@@ -2,6 +2,8 @@
     f_in:f_in
     a_in:a_in
     slide:slide
+    ans:ans
+    slide_text:slide_text
     name: "first"
     Image:
         source: "bg.png"
@@ -10,23 +12,33 @@
         allow_stretch: True
         keep_ratio: False
     MDCard:
-        size_hint: (.42,.765)
+        size_hint: (.42,.9)
         pos_hint: {"center_x": .685, "center_y": .5}
         md_bg_color: 44/255,41/255,68/255,255/255
         elevation: 2
         radius: [40,40,40,40]
     MDCard:
         size_hint: (.36,.2)
-        pos_hint: {"center_x": .685, "center_y": .25}
+        pos_hint: {"center_x": .685, "center_y": .315}
         md_bg_color: 58/255,62/255,99/255,255/255
         elevation: 2
         radius: [40,40,40,40]
-        ScrollView:
-            do_scroll_x: False  
-            do_scroll_y: True
-            GridLayout:
-                id: output  
-                cols: 1                           
+        GridLayout:
+            id: output  
+            cols: 1
+    MDCard:
+        size_hint: (.25,.09)
+        pos_hint: {"center_x": .74, "center_y": .145}
+        md_bg_color: 58/255,62/255,99/255,255/255
+        elevation: 2
+        padding: ('27dp', '27dp', '27dp', '27dp')
+        radius: [40,40,40,40] 
+        MDLabel:
+            id: ans
+            font_name: "SPoppins"
+            font_size: "16sp"
+            halign: "left"
+            color: 1,1,1,1                         
     MDLabel:
         text: "Newton"
         font_name: "MPoppins"
@@ -76,30 +88,36 @@
         thumb_color_inactive: 90/255,45/255,148/255,255/255
         track_color_active: 1,1,1,1
         track_color_inactive: 1,1,1,1
-        hint: True
-        hint_bg_color: 224/255, 219/255, 222/255, 1
-        hint_text_color:rgba(140,82,255,255)
+        hint: False
         size_hint_x: 0.376
         size_hint_y: 0.1
-        pos_hint: {"center_x": .685, "center_y": .485}
+        pos_hint: {"center_x": .685, "center_y": .5555}
         min: 3
         max: 8
         step: 1
         on_value: root.sl(*args)
+    MDLabel:
+        id: slide_text
+        text: "0"
+        font_name: "SPoppins"
+        font_size: "17sp"
+        pos_hint: {"center_x": 0.14, "center_y": .6179}
+        halign: "right"
+        color: rgba(140,82,255,255)
     MDTextField:
         id:f_in
         hint_text: "Enter Expression"
         font_name_hint_text:"LPoppins"
         mode: "fill"
-        text_color_normal:rgba(140,82,255,255)
-        text_color_focus:rgba(140,82,255,255)
+        text_color_normal:1,1,1,1
+        text_color_focus:1,1,1,1
         line_color_normal:rgba(140,82,255,255)
         line_color_focus:rgba(140,82,255,255)
         fill_color_normal: 58/255,62/255,99/255,255/255
         fill_color_focus: 58/255,62/255,99/255,255/255
         hint_text_color_normal: rgba(140,82,255,255)
         hint_text_color_focus: rgba(140,82,255,255)
-        pos_hint: {"center_x": .685, "center_y": .78}
+        pos_hint: {"center_x": .685, "center_y": .85}
         size_hint: .37, .08
         radius:[20,20,20,20]
         active_line: False
@@ -112,15 +130,15 @@
         size_hint_text:"50sp"
         font_name_hint_text:"LPoppins"
         mode: "fill"
-        text_color_normal:rgba(140,82,255,255)
-        text_color_focus:rgba(140,82,255,255)
+        text_color_normal:1,1,1,1
+        text_color_focus:1,1,1,1
         line_color_normal:rgba(140,82,255,255)
         line_color_focus:rgba(140,82,255,255)
         fill_color_normal: 58/255,62/255,99/255,255/255
         fill_color_focus: 58/255,62/255,99/255,255/255
         hint_text_color_normal: rgba(140,82,255,255)
         hint_text_color_focus: rgba(140,82,255,255)
-        pos_hint: {"center_x": .685, "center_y": .65}
+        pos_hint: {"center_x": .685, "center_y": .72}
         size_hint: .37, .08
         radius:[20,20,20,20]
         active_line: False
@@ -129,15 +147,22 @@
         icon_left_color_focus: "pink"
         
     MDLabel:
-        text: "Tolerable Error"
+        text: "Tolerable Error :"
         font_name: "SPoppins"
         font_size: "18sp"
-        pos_hint: {"center_x": .547, "center_y": .55}
+        pos_hint: {"center_x": .547, "center_y": .62}
         halign: "center"
         color: rgba(140,82,255,255)
+    MDLabel:
+        text: "Answer :"
+        font_name: "MPoppins"
+        font_size: "30sp"
+        pos_hint: {"center_x": .555, "center_y": .147}
+        halign: "center"
+        color: 1,1,1,1
     MDFillRoundFlatButton:
         text :"Calculate"
-        pos_hint: {"center_x": 0.68, "center_y": 0.42}
+        pos_hint: {"center_x": 0.68, "center_y": 0.478}
         font_size: "18sp"
         size_hint: .13, .065
         font_name: "SPoppins"

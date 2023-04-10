@@ -12,10 +12,18 @@ class FirstPage(Screen):
     slide = ObjectProperty(None)
     f_in = ObjectProperty(None)
     a_in = ObjectProperty(None)
+    ans = ObjectProperty(None)
+    slide_text = ObjectProperty(None)
     output = []
 
     def sl(self,*args):
-        self.slide.text = str(int(args[1]))
+        # self.slide.text = str(int(args[1]))
+        # self.slide_text.text = self.slide.text
+        global n
+        n = int(args[1])
+        self.slide.text = "1" + "0" * n
+        n1 = round(1/int(self.slide.text),n)
+        self.slide_text.text = str(n1)
         return self.slide.text
     
     def calc(self):
@@ -26,7 +34,7 @@ class FirstPage(Screen):
         fun = self.f_in.text
 
         x0 = float(self.a_in.text)
-        e = float("1e-{}".format(self.slide.text))
+        e = float("1e-{}".format(n))
         x = sp.Symbol('x')
         exp = sp.sympify(fun) 
         dydx = exp.diff() 
@@ -43,12 +51,12 @@ class FirstPage(Screen):
                 break
             xi = xi_1 - f(xi_1)/df(xi_1)
             print("x =",xi,"f(x) =",f(xi))
-            l.append("x = "+str(xi)+"  f(x) = "+str(f(xi)))
+            l.append("x = "+str(round(xi,13))+"  f(x) = "+str(round(f(xi),13)))
             if abs(xi - xi_1) < e:
                 break
             xi_1 = xi
             
-        for index,item in enumerate(l):
+        for item in l:
             products_container = self.ids.output
             details = BoxLayout()
             products_container.add_widget(details)
@@ -56,8 +64,7 @@ class FirstPage(Screen):
             name = Label(text=str(item), color=(1,1,1,1))
             details.add_widget(name)
 
-            if index == len(l)-1:
-                name.text = "Answer: " + name.text
+        self.ans.text = str(xi)
 
         et=time.time()
         print("Runtime:",et-st)    
