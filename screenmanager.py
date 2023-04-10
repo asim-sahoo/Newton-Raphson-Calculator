@@ -17,8 +17,6 @@ class FirstPage(Screen):
     output = []
 
     def sl(self,*args):
-        # self.slide.text = str(int(args[1]))
-        # self.slide_text.text = self.slide.text
         global n
         n = int(args[1])
         self.slide.text = "1" + "0" * n
