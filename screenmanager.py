@@ -72,7 +72,7 @@ class FirstPage(Screen):
             et=time.time()
             print("Runtime:",et-st)    
             print("So the approximate root is :",xi)
-        except UnboundLocalError:
+        except (UnboundLocalError,ValueError):
             d2 = MDDialog(text='Something went Wrong!',radius=[20,20,20,20])
             d2.open()
 
